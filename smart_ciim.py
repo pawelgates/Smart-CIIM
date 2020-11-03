@@ -430,19 +430,40 @@ def create_folders():
     os.chdir(fc_ciim_folder_path + "/Working Week N" + str(c_week) + "/" + str(c_year)[-2:] + str(c_month) + str(c_day))
     os.rename("CIIM Report Table v.1.xlsx", fc_ciim_report_name)
     # Create folders
-    os.chdir(fc_ciim_folder_path + "/Working Week N" + str(c_week) + "/" + str(c_year)[-2:] + str(c_month) + str(c_day))
+    fc_folder_date_temp = fc_ciim_folder_path + "/Working Week N" + str(c_week) + "/" + str(c_year)[-2:] + str(c_month) + str(c_day)
+    os.chdir(fc_folder_date_temp)
     if fc_ocs_entry.get() != "" and fc_ocs_entry.get() != "0":
         for i in range(0, int(fc_ocs_entry.get())):
             os.mkdir("W"+str(i+1))
+            os.chdir(fc_folder_date_temp+"/"+"W"+str(i+1))
+            os.mkdir("Pictures")
+            os.mkdir("Worklogs")
+            os.chdir(fc_folder_date_temp)
+    os.chdir(fc_folder_date_temp)
     if fc_scada_entry.get() != "" and fc_scada_entry.get() != "0":
         for i in range(0, int(fc_scada_entry.get())):
             os.mkdir("S"+str(i+1))
+            os.chdir(fc_folder_date_temp + "/" + "S" + str(i + 1))
+            os.mkdir("Pictures")
+            os.mkdir("Worklogs")
+            os.chdir(fc_folder_date_temp)
+    os.chdir(fc_folder_date_temp)
     if fc_ba_entry.get() != "" and fc_ba_entry.get() != "0":
         for i in range(0, int(fc_ba_entry.get())):
             os.mkdir("BA"+str(i+1))
+            os.chdir(fc_folder_date_temp + "/" + "BA" + str(i + 1))
+            os.mkdir("Pictures")
+            os.mkdir("Worklogs")
+            os.chdir(fc_folder_date_temp)
+    os.chdir(fc_folder_date_temp)
     if fc_custom_x_label.get() != "" and fc_custom_entry.get() != "0" and fc_custom_entry.get() != "":
         for i in range(0, int(fc_custom_entry.get())):
             os.mkdir(fc_custom_x_label.get()+str(i+1))
+            os.chdir(fc_folder_date_temp + "/" + fc_custom_x_label.get()+str(i+1))
+            os.mkdir("Pictures")
+            os.mkdir("Worklogs")
+            os.chdir(fc_folder_date_temp)
+    os.chdir(fc_folder_date_temp)
     os.mkdir("Foreman")
     os.mkdir("612 Forms")
     os.mkdir("Track possession")
