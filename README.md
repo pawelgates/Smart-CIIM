@@ -1,1 +1,2 @@
-# Smart CIIM - GUI Assistant 
+# Smart CIIM - GUI Aplication 
+Using Python (os, tkinter, openpyxl)
