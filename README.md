@@ -14,8 +14,9 @@ Selecting weekly work plan with filedialog (Excel file) -> Selecting the date of
 ![alt text](https://raw.githubusercontent.com/pawelgates/Smart-CIIM/main/project%20pics/smart-ciim-dc.png)
 #### <ins>Delay manager</ins>
 Opening folder with created excel files -> Managing all the missing inforamtion of this files without opening the excel. 
-If the missing line is complited, the background will be Green.  
-If all the missing lines are complited, status will be "Completed".
+If the missing line is completed, the background will be Green.  
+If all the missing lines are completed, status will be "Completed".
+After we saving the data, it will update the Excel file. When we open the file again, lines will be updated with the data from Excel file.
 
 ![alt text](https://raw.githubusercontent.com/pawelgates/Smart-CIIM/main/project%20pics/smart-ciim-dm.png)
 ![alt text](https://raw.githubusercontent.com/pawelgates/Smart-CIIM/main/project%20pics/smart-ciim-dm2.png)
