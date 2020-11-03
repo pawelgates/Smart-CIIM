@@ -18,3 +18,4 @@ If the missing line is complited, the background will be Green.
 If all the missing lines are complited, status will be "Completed".
 
 ![alt text](https://raw.githubusercontent.com/pawelgates/Smart-CIIM/main/project%20pics/smart-ciim-dm.png)
+![alt text](https://raw.githubusercontent.com/pawelgates/Smart-CIIM/main/project%20pics/smart-ciim-dm2.png)
