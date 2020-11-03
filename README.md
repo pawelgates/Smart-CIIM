@@ -1,5 +1,5 @@
 # Smart CIIM
-<b>GUI application created with Python (os, tkinter, openpyxl) to manage and create big amount of Excel files without opening them.</b>
+<b>GUI application created with Python (os, tkinter, openpyxl) to create and manage big amount of Excel files without opening them.</b>
 
 
 #### <ins>Main menu</ins>
