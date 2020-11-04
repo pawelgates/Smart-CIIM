@@ -1,4 +1,5 @@
 import os
+import glob
 from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
@@ -109,6 +110,15 @@ def create_delay():
 
     ciim_folder_path = temp_cwp_path.parent
     dc_delays_f_path = Path(str(ciim_folder_path)+"/General Updates/Delays+Cancelled works/")
+
+    ciim_passdown_list = glob.glob(str(Path(str(ciim_folder_path) + "/Pass Down"))+"/*.xlsx")
+    ciim_passdown_list.sort(key=os.path.getmtime, reverse=True)
+    ciim_passdown_name = ciim_passdown_list[0]
+    ciim_passdown_name = ciim_passdown_name.replace(str(Path(str(ciim_folder_path) + "/Pass Down")), "")
+    ciim_passdown_name = ciim_passdown_name.replace(".xlsx", "")
+    ciim_passdown_name = ciim_passdown_name[10:]
+    print(ciim_passdown_name)
+
     print(dc_delays_f_path)
     if os.path.exists(Path(str(dc_delays_f_path)+"/"+year)) == False:
         os.chdir(dc_delays_f_path)
@@ -178,7 +188,7 @@ def create_delay():
         delay_worksheet.cell(row=8, column=4).value = str(construction_wp_worksheet.cell(row=int(teamLeaderNum), column=9).value) + ' - ' + str(
             construction_wp_worksheet.cell(row=int(teamLeaderNum), column=10).value)
         delay_worksheet['D8'].fill = PatternFill(bgColor="FFFFFF")
-        delay_worksheet.cell(row=8, column=8).value = ""
+        delay_worksheet.cell(row=8, column=8).value = ciim_passdown_name
         delay_worksheet['H8'].fill = PatternFill(bgColor="FFFFFF")
 
         delay_worksheet.cell(row=28, column=2).value = 'Y'
