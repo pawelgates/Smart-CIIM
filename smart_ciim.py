@@ -130,7 +130,7 @@ def create_delay():
         os.mkdir("WW"+week_num)
     else:
         print("The week folder already exists")
-    dc_day_folder = day+"."+month+"."+year[:-2]
+    dc_day_folder = day+"."+month+"."+year[2:]
     print(dc_day_folder)
     if os.path.exists(Path(str(dc_delays_f_path)+"/"+year+"/WW"+week_num+"/"+dc_day_folder)) == False:
         os.chdir(Path(str(dc_delays_f_path)+"/"+year+"/WW"+week_num))
@@ -171,9 +171,9 @@ def create_delay():
         delay_worksheet.cell(row=6, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=6).value  # CP End Time
         delay_worksheet['B6'].fill = PatternFill(bgColor="FFFFFF")
 
-        delay_worksheet.cell(row=32, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=20).value  # Tofes
-        delay_worksheet.cell(row=34, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=21).value  # WSP
-        delay_worksheet.cell(row=33, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=22).value  # COMMpyDd
+        delay_worksheet.cell(row=32, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=21).value  # Tofes
+        delay_worksheet.cell(row=34, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=22).value  # WSP
+        delay_worksheet.cell(row=33, column=2).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=23).value  # COMMpyDd
 
         delay_worksheet.cell(row=16, column=1).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=11).value  # Foreman name
         delay_worksheet.cell(row=17, column=1).value = construction_wp_worksheet.cell(row=int(teamLeaderNum), column=13).value  # Team Leader name
@@ -298,10 +298,12 @@ def save_to_excel():
     else:
         delay_excel_worksheet['A18'] = "."
 
-    if frame4_v1_entry.get() == "" and frame4_vehicles_var.get() == 0:
-        delay_excel_worksheet['D28'] = frame4_v1_entry.get()
-        global vehicle1_var
-        vehicle1_var = 0
+    if frame4_vehicles_var.get() == 0:
+        if frame4_v1_entry.get() != "":
+            delay_excel_worksheet['D28'] = frame4_v1_entry.get()
+            global vehicle1_var
+            vehicle1_var = 0
+
     else:
         delay_excel_worksheet['D28'] = "No vehicle"
         vehicle1_var = 1
@@ -393,9 +395,13 @@ def pick_date(event):
     fc_picked_date_label.config(text=c_date, font=('Helvetica', 9, 'bold'))
     df = pd.Timestamp(selected_date)
     if df.dayofweek == 6:
-        c_week = df.weekofyear+1
+        c_week = df.weekofyear+2
+        if int(c_week) < 10:
+            c_week = "0"+str(c_week)
     else:
-        c_week = df.weekofyear
+        c_week = df.weekofyear+1
+        if int(c_week) < 10:
+            c_week = "0"+str(c_week)
     fc_week_label.config(text=c_week, font=('Helvetica', 9, 'bold'))
     if fc_ciim_folder_path == "":
         fc_status_week.config(text="Choose the CIIM folder", fg="Red", font=('Helvetica', 10, 'bold') )
@@ -478,6 +484,7 @@ def create_folders():
     os.mkdir("612 Forms")
     os.mkdir("Track possession")
     os.mkdir("TS Worklogs")
+    os.mkdir("PDF Files")
 
     fc_ocs_entry.delete(0, END)
     fc_ocs_entry.config(state="disabled")
