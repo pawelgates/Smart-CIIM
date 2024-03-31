@@ -3,7 +3,7 @@
 
 
 #### <ins>Main menu</ins>
-![alt text](https://github.com/pawelgates/Smart-CIIM/blob/main/pics/pic4.png)
+![alt text](https://github.com/pawelgates/Smart-CIIM/blob/main/IMG_0271.png)
 #### <ins>Folder creator</ins>
 Creating folder for selected date (if it doesn't exist) and sub-folders according to the input.  
 
